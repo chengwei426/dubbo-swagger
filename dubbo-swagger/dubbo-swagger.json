@@ -1,0 +1,328 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": "dubbo-example-app",
+    "contact": {
+      "name": "Sayi"
+    }
+  },
+  "basePath": "/",
+  "paths": {
+    "/h/com.deepoove.swagger.dubbo.example.api.service.AccountService/login": {
+      "post": {
+        "tags": ["AccountService"],
+        "summary": "登录",
+        "description": "boolean login(java.lang.String,java.lang.String)",
+        "operationId": "login",
+        "parameters": [{
+          "name": "account",
+          "in": "query",
+          "description": "用户帐号",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "password",
+          "in": "query",
+          "description": "用户密码",
+          "required": false,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/h/com.deepoove.swagger.dubbo.example.api.service.AccountService/login/byCode": {
+      "post": {
+        "tags": ["AccountService"],
+        "summary": "登录",
+        "description": "boolean login(java.lang.String,int)邀请码登录",
+        "operationId": "login",
+        "parameters": [{
+          "name": "account",
+          "in": "query",
+          "description": "用户帐号",
+          "required": false,
+          "type": "string"
+        }, {
+          "name": "code",
+          "in": "query",
+          "description": "邀请码",
+          "required": true,
+          "type": "integer"
+        }],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "/h/com.deepoove.swagger.dubbo.example.api.service.AccountService/logout": {
+      "post": {
+        "tags": ["AccountService"],
+        "summary": "登出",
+        "description": "void logout(java.lang.String)退出用户信息",
+        "operationId": "logout",
+        "parameters": [{
+          "name": "account",
+          "in": "query",
+          "required": false,
+          "type": "string"
+        }],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/h/com.deepoove.swagger.dubbo.example.api.service.AccountService/updateInfo": {
+      "post": {
+        "tags": ["AccountService"],
+        "description": "void updateInfo(boolean,java.lang.Integer)",
+        "operationId": "updateInfo",
+        "parameters": [{
+          "name": "isBoy",
+          "in": "query",
+          "required": true,
+          "type": "boolean"
+        }, {
+          "name": "number",
+          "in": "query",
+          "required": false,
+          "type": "integer"
+        }],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/h/com.deepoove.swagger.dubbo.example.api.service.PushService/push": {
+      "post": {
+        "tags": ["PushService"],
+        "summary": "推送",
+        "description": "String push(java.lang.String)推送消息至指定帐号",
+        "operationId": "push",
+        "parameters": [{
+          "name": "account",
+          "in": "query",
+          "description": "帐号",
+          "required": false,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/h/com.deepoove.swagger.dubbo.example.api.service.UserService/compare": {
+      "post": {
+        "tags": ["UserService"],
+        "summary": "比较用户",
+        "description": "int compare(com.deepoove.swagger.dubbo.example.api.pojo.User,com.deepoove.swagger.dubbo.example.api.pojo.User)",
+        "operationId": "compare",
+        "parameters": [{
+          "in": "formData",
+          "name": "src",
+          "description": "用户id",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/User"
+          }
+        }, {
+          "in": "formData",
+          "name": "dest",
+          "required": false,
+          "schema": {
+            "$ref": "#/definitions/User"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        }
+      }
+    },
+    "/h/com.deepoove.swagger.dubbo.example.api.service.UserService/delete": {
+      "post": {
+        "tags": ["UserService"],
+        "summary": "删除用户",
+        "description": "void delete(java.lang.String)保存用户信息",
+        "operationId": "delete",
+        "parameters": [{
+          "name": "id",
+          "in": "query",
+          "description": "用户id",
+          "required": false,
+          "type": "string"
+        }],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/h/com.deepoove.swagger.dubbo.example.api.service.UserService/get": {
+      "get": {
+        "tags": ["UserService"],
+        "summary": "获取用户",
+        "description": "User get(java.lang.String)通过id取用户信息",
+        "operationId": "get",
+        "parameters": [{
+          "name": "id",
+          "in": "query",
+          "description": "用户id",
+          "required": false,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/h/com.deepoove.swagger.dubbo.example.api.service.UserService/query/byArea": {
+      "post": {
+        "tags": ["UserService"],
+        "summary": "查询用户",
+        "description": "List query(int)通过城市地区code取用户信息",
+        "operationId": "query",
+        "parameters": [{
+          "name": "areaCode",
+          "in": "query",
+          "description": "城市地区code",
+          "required": true,
+          "type": "integer"
+        }],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/h/com.deepoove.swagger.dubbo.example.api.service.UserService/query/byPhone": {
+      "post": {
+        "tags": ["UserService"],
+        "summary": "查询用户",
+        "description": "List query(java.lang.String)通过phone取用户信息",
+        "operationId": "query",
+        "parameters": [{
+          "name": "phone",
+          "in": "query",
+          "description": "用户phone",
+          "required": false,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/h/com.deepoove.swagger.dubbo.example.api.service.UserService/save": {
+      "post": {
+        "tags": ["UserService"],
+        "summary": "保存用户",
+        "description": "void save(com.deepoove.swagger.dubbo.example.api.pojo.User)保存用户信息",
+        "operationId": "save",
+        "parameters": [{
+          "in": "formData",
+          "name": "user",
+          "description": "用户信息",
+          "required": false,
+          "schema": {
+            "$ref": "#/definitions/User"
+          }
+        }],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/h/com.deepoove.swagger.dubbo.example.api.service.UserService/update": {
+      "post": {
+        "tags": ["UserService"],
+        "summary": "更新用户",
+        "description": "User update(com.deepoove.swagger.dubbo.example.api.pojo.User)更新用户信息",
+        "operationId": "update",
+        "parameters": [{
+          "in": "formData",
+          "name": "user",
+          "description": "用户信息",
+          "required": false,
+          "schema": {
+            "$ref": "#/definitions/User"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "description": "用户姓名"
+        },
+        "site": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": "dubbo-provider",
+    "contact": {}
+  },
+  "basePath": "/",
+  "paths": {
+    "/cg/com.iwhalecloud.api.IOrderService/getMemberById": {
+      "post": {
+        "tags": ["IOrderService"],
+        "summary": "获取会员信息",
+        "description": "String getMemberById(java.lang.Long)通过id取会员信息",
+        "operationId": "getMemberById",
+        "parameters": [{
+          "name": "memberId",
+          "in": "query",
+          "description": "12",
+          "required": true,
+          "type": "long"
+        }],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/cg/com.iwhalecloud.api.IUserInfoService/getUser": {
+      "post": {
+        "tags": ["IUserInfoService"],
+        "summary": "获取用户信息",
+        "description": "String getUser(java.lang.Long)通过id取用户名",
+        "operationId": "getUser",
+        "parameters": [{
+          "name": "userId",
+          "in": "query",
+          "description": "12",
+          "required": true,
+          "type": "long"
+        }],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/cg/com.iwhalecloud.api.IUserInfoService/querymemberDto": {
+      "post": {
+        "tags": ["IUserInfoService"],
+        "summary": "查询会员信息",
+        "description": "ResponseData querymemberDto(com.iwhalecloud.entity.Member)通过条件取用户信息",
+        "operationId": "querymemberDto",
+        "parameters": [{
+          "in": "formData",
+          "name": "member",
+          "description": "会员信息",
+          "required": false,
+          "schema": {
+            "$ref": "#/definitions/Member"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Member"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Member": {
+      "type": "object",
+      "properties": {
+        "memberId": {
+          "type": "integer",
+          "format": "int32",
+          "description": "会员Id"
+        },
+        "memberName": {
+          "type": "string",
+          "description": "会员名"
+        },
+        "memberPosition": {
+          "type": "string",
+          "description": "会员职位"
+        }
+      },
+      "description": "会员对象"
+    }
+  }
+}
